@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>About Me</title>
+    <meta name="description" content="就活に際した自己紹介用のポートフォリオページです">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/jquery.inview.min.js"></script>
+    <script src="js/main.js"></script>
+  </head>
+
+  <body>
+    <header id="header" class="wrapper">
+      <nav id="navi">
+        <ul class="inview-in fadein">
+          <li><a href="#profile">Profile</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#skill">Skill</a></li>
+          <li><a href="#create">Create</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <main>
+      <div id="intro">
+        <h1 class="myname inview-show fadein">DAISUKE UCHIKOSHI</h1>
+        <div class="mask"></div>
+      </div>
+
+      <section id="profile" class="wrapper container">
+        <div class="title">
+          <h2 class="section-title inview-show fadein">Profile</h2>
+          <span class="inview-slide box"></span>
+        </div>
+        <div class="profile-item inview-in fadein">
+          <dl class="detail">
+            <dt>打越 大輔</dt>
+            <dd>1998年11月17日生まれの23歳。<br>
+                茨城県出身。趣味は曲作りと歌うこと。</dd>
+            <dt>略歴</dt>
+            <dd>2014　茨城県立水戸第一高校 入学<br>
+                2017　東京工業大学第7類 入学<br>
+                2021　東京工業大学生命理工学院 進学</dd>
+          </dl>
+          <img src="img/piano.jpg" alt="">
+          <img src="img/drums.JPG" alt="">
+        </div>
+
+        <p class="comment inview-in fadein">
+          普段は植物を使った研究に取り組んでいる大学院生です。大学での専攻とは全く異なりますが、「自分のアイディアを形として残したい」という気持ち、
+          趣味の創作活動を通じて体感した「誰かと協力して行う制作の楽しさ」から、クリエイティブな仕事を志すことにしました。
+          そんな中、前々からプログラミングに対する興味があったこと、所属する研究室のホームページ制作の機会があったことでWeb制作への関心が高まり、フロントエンジニアの道へ進むことに決めました。
+          Webデザインやプログラミングは1からの挑戦でしたが、研究の傍らで少しずつ学習を進め、現段階での終着点としてこのポートフォリオを作成するに至りました。<br><br>
+          好奇心旺盛な性格で、興味が沸いたものには何にでも積極的に取り掛かる行動力があること、それでいて簡単に投げ出すことはせず、自分の納得するところに達するまで深堀りできることが自分の強みです。
+          自分の限界を簡単に決めず、ゆくゆくは、デザインとプログラミングのどちらか一方だけではなく、その両方に携わることのできる潤滑油のようなエンジニアを目指したいと考えています。
+        </p>
+      </section>
+      
+
+      <section id="work">
+        <div class="wrapper container">
+          <div class="title">
+            <h2 class="section-title inview-show fadein">My Work</h2>
+            <span class="inview-slide box"></span>
+          </div>
+          <div class="work-item inview-in fadein">
+            <div class="sample">
+              <a class="pc-img" href="http://www.plantmorphogenesis.bio.titech.ac.jp/~official/" target= "_blank" rel="noopener noreferrer"><img src="img/hp-pc.png" alt=""></a>
+              <a class="tab-img" href="http://www.plantmorphogenesis.bio.titech.ac.jp/~official/" target= "_blank" rel="noopener noreferrer"><img src="img/hp-tab.png" alt=""></a>
+            </div>
+            <dl class="content">
+              <dt>制作期間</dt>
+              <dd>およそ1ヶ月半</dd>
+              <dt>言語・技術</dt>
+              <dd>HTML / CSS (SCSS) / JavaScript (jQuery) /<br> PHP / MySQL</dd>
+              <dt>行ったこと</dt>
+              <dd>サイト全体のデザイン・レイアウトの見直し<br>
+                  可読性を意識したコード全般の書き換え<br>
+                  CSSやjQueryプラグインによるUI/UXの向上<br>
+                  PHP/MySQLを用いた動的なサイト作り</dd>
+              <dt>苦労した点</dt>
+              <dd>レスポンシブ対応のデザイン・ページ構築<br>
+                  PHPプログラミング（特にMySQLとの連携）</dd>
+            </dl>
+          </div>
+
+          <div class="button inview-in fadein">
+            <a href="http://www.plantmorphogenesis.bio.titech.ac.jp/~official/" target= "_blank" rel="noopener noreferrer">ホームページのリンクはこちら</a>
+            <a href="#" target= "_blank" rel="noopener noreferrer">GitHubのリンクはこちら</a>
+          </div>
+  
+          <div class="comment inview-in fadein">
+            <p>
+              昨年まで研究室のホームページの維持を担当していた先輩からデザインの改善を依頼されたことをきっかけに、
+              どうせなら丸ごと一新してしまおうと思い、1から制作に取り掛かりました。
+              掲載する内容はなるべくそのままに全て白紙から作り直し、実装やその後の動作確認・デバッグまで1人で行っています。<br>
+              <br>
+              ページを再編するにあたっての目的は、「研究にあまり馴染みのない学生や研究室選びに迷っている学生に少しでも興味を持ってもらえるよう、
+              分かりやすく・親しみやすいページ作りをすること」です。そのためにCSSやjQueryプラグインによる簡単なアニメーション、植物ならではの緑を印象付ける配色など、
+              視覚的に優しく、かつ飽きさせないデザインを意識しました。写真を多く使うことにもこだわり、先輩の助力を得てたくさんの素材を提供していただきました。
+              また、自分の卒業後もページの更新がしやすいよう、プログラミングに慣れていない人にも親切なコーディングや、
+              コメントアウト・GitHub上でのREADMEの活用を心掛けています。<br>
+              <br>
+              苦労した点は多々ありますが、勉強を始めて間もない状態にも関わらず、実在する団体のホームページ作成という責任感をもった作業に取り組めたこと、
+              それを最後までやり遂げられたことは非常に良い経験となりました。
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="skill" class="wrapper container">
+        <div class="title">
+          <h2 class="section-title inview-show fadein">My Skill</h2>
+          <span class="inview-slide box"></span>
+        </div>
+        <p class="comment inview-in fadein">
+          今年の3月から本格的に勉強を始め、Codestep様<a href="https://code-step.com/" target= "_blank" rel="noopener noreferrer"><img class="link-icon" src="img/link.jpg" alt=""> </a>が提供してくださっている
+          模写コーディング練習を通じて、1ヶ月ほどHTML/CSS/JavaScriptの基本的な知識と実践的なWebデザインを学びました。
+        </p>
+
+        <div class="skills inview-in fadein">
+          <ul>
+            <li>
+              <img src="img/pen.png" alt="">      
+              <h3 class="mini-title">デザイン</h3>
+              <p>UI/UXを意識したページ設計、レスポンシブデザインを<br>考慮したHTML/CSSのコーディング</p>
+            </li>
+            <li>    
+              <img src="img/proglam.png" alt="">          
+              <h3 class="mini-title">プログラミング</h3>
+              <p>JavaScript（jQuery）・PHPを用いたプログラミング、<br>MySQLを用いたデータベースの作成</p>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="detail inview-in fadein">
+          <h3 class="language"><img src="img/design.png"></h3>
+          <p class="comment">
+            動画制作で培った経験を基にした、うるさすぎず、かといって退屈しないように簡単な動きを付けたWebデザインが持ち味です。
+            当面の課題は、型崩れしないデザインを立案の段階から考えての設計です。</p>
+        </div>
+        <div class="detail inview-in fadein">
+          <h3 class="language"><img src="img/html.png"></h3>
+          <p class="comment">模写の成果もあってか、HTML/CSSを用いた簡単なデザインの立案と、その迅速で緻密な再現には自信があります。
+             また、SCSSを利用したコーディングも可能です。</p>
+        </div>
+        <div class="detail inview-in fadein">
+          <h3 class="language"><img src="img/js.png"></h3>
+          <p class="comment">今後、最も力を入れて学習したい言語です。十分な勉強をしないまま実践に移ってしまったため、
+             現状は学習したものをそのまま利用したり、jQueryに依存したりといった次第です。
+             他のフレームワークを積極的に利用することや、スクリプト言語の更に根本的な理解を深めることで、ゆくゆくは自分の力でのコーディングを目指したいと考えています。</p>
+        </div>
+        <div class="detail inview-in fadein">
+          <h3 class="language"><img src="img/php.png"></h3>
+          <p class="comment">HPの制作と並行してPHP・データベース・サーバーといったバックエンドの知識を少しずつ蓄え、
+             HTMLに埋め込む形での実装まで漕ぎつけました。
+             当初はページ内検索機能やコンタクトフォームといった機能の追加を検討していましたが、
+             セキュリティについての無知さから現状での実装は断念しています。引き続き、「できること」を増やしていきたい所存です。</p>
+        </div>
+      </section>
+       
+      <section id="create">
+        <div class="wrapper container">
+          <div class="title">
+            <h2 class="section-title inview-show fadein">Create</h2>
+            <span class="inview-slide box"></span>
+          </div>
+          <div class="inview-in fadein">
+            <p class="comment">かねてよりあった音楽への興味から、2年前の自粛期間で浮いた時間を使い、創作活動をはじめました。
+                               現在は、人工歌唱ソフトウェアを用いた作曲、イラストレーション、および動画制作を友人と2人で行っています。</p>
+            <ul class="music">
+              <li>
+                <div class="thumbnail">
+                  <a href="https://youtu.be/M-HYtglf1eI" target= "_blank" rel="noopener noreferrer"><img src="img/thumbnail1.png" alt=""></a>
+                </div>
+                <div class="upload">
+                  <a href="https://youtu.be/M-HYtglf1eI" target= "_blank" rel="noopener noreferrer">YouTube</a>
+                  <a href="https://nico.ms/sm39800806" target= "_blank" rel="noopener noreferrer">niconico</a>
+                </div>
+              </li>
+              <li>
+                <div class="thumbnail">
+                  <a href="https://youtu.be/5E8xp1D81FY" target= "_blank" rel="noopener noreferrer"><img src="img/thumbnail2.jpg" alt=""></a>
+                </div>
+                <div class="upload">
+                  <a href="https://youtu.be/5E8xp1D81FY" target= "_blank" rel="noopener noreferrer">YouTube</a>
+                  <a href="https://nico.ms/sm40085761" target= "_blank" rel="noopener noreferrer">niconico</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer">
+      <p>&copy; Daisuke Uchikoshi</p>
+    </footer>
+
+  </body>
+</html>

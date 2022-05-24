@@ -1,0 +1,817 @@
+@charset "UTF-8";
+/*------------------------------------
+  メディアクエリ 
+--------------------------------------*/
+/*------------------------------------
+  ページ全体
+--------------------------------------*/
+html {
+  font-size: 100%;
+}
+
+body {
+  color: #121212;
+  font-family: 'Yu Gothic UI','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','Hiragino Sans','Arial',sans-serif;
+  font-weight: 400;
+  background-color: white;
+  line-height: 1.7;
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    font-size: 0.875rem;
+  }
+}
+
+body img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+body a {
+  color: #121212;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+body li {
+  list-style: none;
+}
+
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.container {
+  margin-bottom: 140px;
+}
+
+@media screen and (max-width: 860px) {
+  .container {
+    margin-bottom: 100px;
+  }
+}
+
+.comment {
+  padding: 0 45px;
+  letter-spacing: 0.1em;
+}
+
+@media screen and (max-width: 860px) {
+  .comment {
+    padding: 0 15px;
+  }
+}
+
+/*------------------------------------
+  aタグのhover時の動き
+--------------------------------------*/
+/*------------------------------------
+  各セクションのタイトル 
+--------------------------------------*/
+.title {
+  position: relative;
+  margin-bottom: 40px;
+  /*.boxを隠す両脇の白いボックス*/
+}
+
+.title::before, .title::after, .title#intro::after {
+  content: "";
+  position: absolute;
+  left: -200px;
+  top: 0;
+  width: 200px;
+  height: 70px;
+  background-color: white;
+  z-index: -1;
+}
+
+@media screen and (max-width: 860px) {
+  .title::before, .title::after, .title#intro::after {
+    height: 60px;
+  }
+}
+
+.title::after {
+  left: 200px;
+}
+
+.section-title {
+  font-size: 3.2rem;
+  font-weight: 200;
+  line-height: 1.2;
+}
+
+@media screen and (max-width: 860px) {
+  .section-title {
+    font-size: 2.75rem;
+  }
+}
+
+/*タイトルの出現アニメーション（緑色ボックス）*/
+.box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 70px;
+  opacity: 0;
+  background-color: rgba(199, 230, 231, 0.7);
+  z-index: -2;
+}
+
+@media screen and (max-width: 860px) {
+  .box {
+    height: 60px;
+  }
+}
+
+/*------------------------------------
+  inview
+--------------------------------------*/
+.fadein {
+  opacity: 0;
+}
+
+.show {
+  animation: show 1s ease-out 0.7s forwards;
+}
+
+.slide {
+  animation: slide 1s ease-out 0s forwards;
+}
+
+.in {
+  animation: in 1s ease-out 0s forwards;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide {
+  0% {
+    opacity: 1;
+    transform: translateX(-100%);
+  }
+  70% {
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+}
+
+@keyframes in {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*------------------------------------
+  ヘッダー 
+--------------------------------------*/
+#header {
+  background-color: #fff;
+  height: 90px;
+  padding: 30px 15px;
+}
+
+#navi ul {
+  display: flex;
+  justify-content: right;
+}
+
+#navi li {
+  margin-left: 40px;
+}
+
+@media screen and (max-width: 500px) {
+  #navi li {
+    margin-left: 25px;
+  }
+}
+
+#navi a {
+  display: block;
+  position: relative;
+}
+
+#navi a::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #783c3e;
+  transition: 0.5s ease-out;
+}
+
+#navi a:hover::after {
+  width: 100%;
+}
+
+/*------------------------------------
+  トップ画面 
+--------------------------------------*/
+/*イントロの出現アニメーション*/
+@keyframes flash {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  42% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 0;
+  }
+  58% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#intro {
+  width: 100%;
+  height: calc(100vh - 90px);
+  margin-bottom: 60px;
+  letter-spacing: 0.4em;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  /*ブロックノイズ1/2*/
+}
+
+#intro::before, #intro::after {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: calc(50vh - 100px);
+  left: calc(50vw - 220px);
+  opacity: 0;
+  background-color: #d6d6d6;
+  animation: flash 1s ease 0.2s forwards;
+  z-index: -1;
+}
+
+#intro::after {
+  width: 300px;
+  height: 1px;
+  top: calc(50vh - 60px);
+  left: calc(50vw + 50px);
+  background-color: #717171;
+}
+
+/*ブロックノイズのために重ねる要素*/
+.mask {
+  height: calc(100vh - 120px);
+  /*ブロックノイズ3/4*/
+}
+
+.mask::before, .mask#intro::after, .mask::after {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 30px;
+  top: calc(50vh - 20px);
+  left: calc(50vw + 80px);
+  opacity: 0;
+  background-color: #c5c5c5;
+  animation: flash 1s ease 0.4s forwards;
+  z-index: -1;
+}
+
+.mask::after {
+  width: 360px;
+  height: 2px;
+  top: calc(50vh + 20px);
+  left: calc(50vw - 450px);
+  background-color: #dedede;
+}
+
+.myname {
+  height: calc(100vh - 90px);
+  line-height: calc(100vh - 90px);
+  position: relative;
+  font-size: 1.5rem;
+  font-weight: normal;
+  /*右下の縦線*/
+}
+
+@media screen and (max-width: 500px) {
+  .myname {
+    font-size: 1.25rem;
+  }
+}
+
+.myname::before, .myname.title::after, .myname#intro::after, .myname.mask::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 35vh;
+  top: calc(50vh + 20px);
+  left: 70vw;
+  background-color: #646464;
+  z-index: -1;
+}
+
+/*------------------------------------
+  プロフィール 
+--------------------------------------*/
+.profile-item {
+  position: relative;
+  height: 380px;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 500px) {
+  .profile-item {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.profile-item .detail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 400px;
+  padding: 0px 15px 100px 45px;
+  background-color: white;
+}
+
+@media screen and (max-width: 860px) {
+  .profile-item .detail {
+    padding: 0 15px;
+  }
+}
+
+.profile-item .detail dt {
+  font-weight: 500;
+}
+
+.profile-item .detail dd {
+  margin: 5px 0 20px 15px;
+}
+
+@media screen and (max-width: 500px) {
+  .profile-item .detail dd {
+    font-size: 0.825rem;
+  }
+}
+
+.profile-item img {
+  position: absolute;
+  width: 130px;
+  height: 320px;
+  object-fit: cover;
+  z-index: -1;
+}
+
+@media screen and (max-width: 500px) {
+  .profile-item img {
+    width: 90%;
+    height: 120px;
+    left: 0;
+    z-index: 0;
+  }
+}
+
+.profile-item img:nth-of-type(1) {
+  bottom: 20px;
+  right: 0;
+  margin: 0 auto;
+}
+
+.profile-item img:nth-of-type(2) {
+  bottom: 60px;
+  right: 280px;
+}
+
+@media screen and (max-width: 500px) {
+  .profile-item img:nth-of-type(2) {
+    display: none;
+  }
+}
+
+/*------------------------------------
+  制作物 
+--------------------------------------*/
+#work {
+  position: relative;
+  overflow: hidden;
+  /*背景の灰色／縮小したときに崩れないように横幅広め（overflow: hiddenで隠す）*/
+}
+
+#work::before, #work.title::after, #work.mask::after {
+  content: "";
+  position: absolute;
+  width: 140%;
+  height: 60%;
+  top: 20%;
+  left: -20%;
+  transform: rotate(5deg);
+  background-color: #f0f0f0;
+}
+
+#work .work-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+@media screen and (max-width: 860px) {
+  #work .work-item {
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+}
+
+#work .sample {
+  width: 40%;
+  padding-left: 45px;
+}
+
+@media screen and (max-width: 860px) {
+  #work .sample {
+    padding-left: 0;
+    margin-bottom: 40px;
+    max-width: 500px;
+    width: 100%;
+  }
+}
+
+#work .sample a {
+  display: block;
+  outline: 1px solid #6eb5b7;
+}
+
+#work .sample a:hover {
+  outline: 3px solid #6eb5b7;
+  opacity: 0.7;
+}
+
+#work .sample img {
+  object-fit: cover;
+}
+
+@media screen and (max-width: 860px) {
+  #work .sample .pc-img {
+    display: none;
+  }
+}
+
+#work .sample .tab-img {
+  display: none;
+}
+
+@media screen and (max-width: 860px) {
+  #work .sample .tab-img {
+    display: block;
+  }
+}
+
+#work .content {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: right;
+}
+
+@media screen and (max-width: 860px) {
+  #work .content {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #work .content {
+    margin-left: 5%;
+    flex-direction: column;
+  }
+}
+
+#work .content dt {
+  width: 20%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 860px) {
+  #work .content dt {
+    width: 25%;
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #work .content dt {
+    padding: 0;
+    border-bottom: 1px solid black;
+  }
+}
+
+#work .content dd {
+  width: 65%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 860px) {
+  #work .content dd {
+    width: 60%;
+    min-width: 330px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #work .content dd {
+    padding-top: 5px;
+  }
+}
+
+/*リンクのボタン*/
+.button {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+@media screen and (max-width: 860px) {
+  .button {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+}
+
+.button a {
+  display: inline-block;
+  margin: 0 40px;
+  width: 300px;
+  height: 70px;
+  border: 1px solid #6eb5b7;
+  line-height: 70px;
+  text-align: center;
+  position: relative;
+  transition: 0.8s;
+}
+
+@media screen and (max-width: 860px) {
+  .button a {
+    margin: 20px;
+  }
+}
+
+.button a::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -15px;
+  width: 299px;
+  height: 69px;
+  background-color: rgba(199, 230, 231, 0.7);
+  transition: 0.6s;
+  z-index: -1;
+}
+
+.button a:hover {
+  background-color: transparent;
+  color: white;
+}
+
+.button a:hover::after {
+  top: 0;
+  left: 0;
+  background-color: #6eb5b7;
+}
+
+/*------------------------------------
+  スキル
+--------------------------------------*/
+.mini-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 40px 0 10px 0;
+}
+
+.skills {
+  margin: 60px 0;
+}
+
+.skills ul {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+@media screen and (max-width: 860px) {
+  .skills ul {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.skills li {
+  width: 50%;
+  padding: 0 15px;
+}
+
+@media screen and (max-width: 860px) {
+  .skills li {
+    width: 100%;
+    margin-bottom: 60px;
+  }
+}
+
+.skills img {
+  width: 260px;
+  margin-bottom: -20px;
+  /*イラストと文字が離れすぎるため上に詰める*/
+}
+
+@media screen and (max-width: 860px) {
+  .skills img {
+    width: 200px;
+  }
+}
+
+.language {
+  margin-top: 30px;
+  position: relative;
+  padding: 0 15px;
+  /*レタリングの下線*/
+}
+
+@media screen and (max-width: 500px) {
+  .language {
+    padding: 0;
+  }
+}
+
+.language img {
+  width: 190px;
+}
+
+@media screen and (max-width: 860px) {
+  .language img {
+    width: 160px;
+  }
+}
+
+.language::after {
+  content: "";
+  position: absolute;
+  left: 15px;
+  bottom: 20px;
+  width: 220px;
+  height: 1px;
+  background-color: #121212;
+}
+
+@media screen and (max-width: 860px) {
+  .language::after {
+    bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .language::after {
+    left: 0;
+  }
+}
+
+/*文中のリンク*/
+.link-icon {
+  width: 35px;
+}
+
+/*------------------------------------
+  その他の制作物
+--------------------------------------*/
+#create {
+  position: relative;
+  overflow: hidden;
+  /*背景の灰色（#workと同様）*/
+}
+
+#create::before, #create.title::after, #create.mask::after {
+  content: "";
+  position: absolute;
+  width: 140%;
+  height: 60%;
+  top: 15%;
+  left: -20%;
+  transform: rotate(-5deg);
+  background-color: #f0f0f0;
+}
+
+.music {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 860px) {
+  .music {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.music li {
+  width: 50%;
+  padding: 0 20px;
+  margin-top: 60px;
+}
+
+.music li:nth-child(2) {
+  margin-top: 200px;
+}
+
+@media screen and (max-width: 860px) {
+  .music li:nth-child(2) {
+    margin-top: 60px;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .music li {
+    max-width: 450px;
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .music li {
+    width: 95%;
+  }
+}
+
+/*イラストのリンク*/
+.thumbnail a {
+  display: block;
+}
+
+.thumbnail a:hover {
+  outline: 3px solid #6eb5b7;
+  opacity: 0.7;
+}
+
+/*動画サイトリンク*/
+.upload {
+  display: flex;
+  justify-content: center;
+}
+
+.upload a {
+  display: inline-block;
+  margin: 20px 30px 0 30px;
+  position: relative;
+}
+
+.upload a::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #783c3e;
+  transition: 0.5s ease-out;
+}
+
+.upload a:hover::after {
+  width: 100%;
+}
+
+/*------------------------------------
+  フッター
+--------------------------------------*/
+#footer {
+  text-align: center;
+  padding: 20px 15px;
+  font-size: 0.625rem;
+}
+/*# sourceMappingURL=style.css.map */

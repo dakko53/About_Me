@@ -1,0 +1,674 @@
+@charset "UTF-8";
+/*------------------------------------
+  メディアクエリ 
+--------------------------------------*/
+$bp1: 860px;
+@mixin bp1 {
+  @media screen and (max-width: ($bp1)) {
+    @content;
+  }
+}
+$bp2: 500px;
+@mixin bp2 {
+  @media screen and (max-width: ($bp2)) {
+    @content;
+  }
+}
+
+/*------------------------------------
+  ページ全体
+--------------------------------------*/
+html {
+  font-size: 100%;
+}
+body {
+  color: #121212;
+  font-family: 'Yu Gothic UI','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','Hiragino Sans','Arial',sans-serif;
+  font-weight: 400;
+  background-color: rgb(255, 255, 255);
+  line-height: 1.7;
+  @include bp2 {
+    font-size: 0.875rem;
+  }
+  img {
+    max-width: 100%;
+    vertical-align: bottom;
+  }
+  a {
+    color: #121212;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  li {
+    list-style: none;
+  }
+}
+
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.container {
+  margin-bottom: 140px;
+  @include bp1 {
+    margin-bottom: 100px;
+  }
+}
+
+.comment {
+  padding: 0 45px;
+  letter-spacing: 0.1em;
+  @include bp1 {
+    padding: 0 15px;
+  }
+}
+
+/*------------------------------------
+  aタグのhover時の動き
+--------------------------------------*/
+@mixin hov {
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0; 
+    width: 0;
+    height: 2px;
+    background-color: #783c3e;
+    transition: 0.5s ease-out;
+    }
+  &:hover {
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+/*------------------------------------
+  各セクションのタイトル 
+--------------------------------------*/
+.title {
+  position: relative;
+  margin-bottom: 40px;
+  /*.boxを隠す両脇の白いボックス*/
+  &::before {
+    content: "";
+    position: absolute;
+    left: -200px;
+    top: 0;
+    width: 200px;
+    height: 70px;
+    background-color: rgb(255, 255, 255);
+    z-index: -1;
+    @include bp1 {
+      height: 60px;
+    }
+  }
+  &::after {
+    @extend ::before;
+    left: 200px;
+  }
+}
+.section-title {
+  font: {
+    size: 3.2rem;
+    weight: 200;
+  }
+  line-height: 1.2;
+  @include bp1 {
+    font-size: 2.75rem;
+  }
+}
+/*タイトルの出現アニメーション（緑色ボックス）*/
+.box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 70px;
+  opacity: 0;
+  background-color: rgba(199, 230, 231, 0.7);
+  z-index: -2;
+  @include bp1 {
+    height: 60px;
+  }
+}
+
+/*------------------------------------
+  inview
+--------------------------------------*/
+.fadein {
+  opacity: 0;
+}
+
+@mixin inview($role, $time, $delay) {
+  animation: $role $time ease-out $delay forwards;
+}
+.show {
+  @include inview(show, 1s, 0.7s)
+} 
+.slide {
+  @include inview(slide, 1s, 0s)
+} 
+.in {
+  @include inview(in, 1s, 0s)
+} 
+@keyframes show {
+  0% {
+    opacity: 0;
+  } 
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes slide {
+  0% {
+    opacity: 1;
+    transform: translateX(-100%);
+  }
+  70% {
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+}
+@keyframes in {
+  0% {
+    opacity: 0;
+  } 
+  40% {
+    opacity: 0.1;
+  } 
+  100% {
+    opacity: 1;
+  }
+}
+
+/*------------------------------------
+  ヘッダー 
+--------------------------------------*/
+#header {
+  background-color: #fff;
+  height: 90px;
+  padding: 30px 15px;
+}
+#navi {
+  ul {
+    display: flex;
+    justify-content: right;
+  }
+  li {
+    margin-left: 40px;
+    @include bp2 {
+      margin-left: 25px;
+    }
+  }
+  a {
+    display: block;
+    position: relative;
+    @include hov;
+  }
+}
+
+
+/*------------------------------------
+  トップ画面 
+--------------------------------------*/
+
+/*イントロの出現アニメーション*/
+@keyframes flash{
+  0% {
+    opacity: 0;
+  } 
+  40% {
+    opacity: 0;
+  } 
+  42% {
+    opacity: 1;
+  } 
+  55% {
+    opacity: 0;
+  } 
+  58% {
+    opacity: 0.7;
+  } 
+  100% {
+    opacity: 1;
+  }
+}
+
+#intro {
+  width: 100%;
+  height: calc(100vh - 90px);
+  margin-bottom: 60px;
+  letter-spacing: 0.4em;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  /*ブロックノイズ1/2*/
+  &::before {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: calc(50vh - 100px);
+    left: calc(50vw - 220px);
+    opacity: 0;
+    background-color: rgb(214, 214, 214);
+    animation: flash 1s ease 0.2s forwards;
+    z-index: -1;
+  }
+  &::after {
+   @extend ::before;
+    width: 300px;
+    height: 1px;
+    top: calc(50vh - 60px);
+    left: calc(50vw + 50px);
+    background-color: rgb(113, 113, 113);
+  } 
+}
+/*ブロックノイズのために重ねる要素*/
+.mask {
+  height: calc(100vh - 120px);
+  /*ブロックノイズ3/4*/
+  &::before {
+    content: "";
+    position: absolute;
+    width: 140px;
+    height: 30px;
+    top: calc(50vh - 20px);
+    left: calc(50vw + 80px);
+    opacity: 0;
+    background-color: rgb(197, 197, 197);
+    animation: flash 1s ease 0.4s forwards;
+    z-index: -1;
+  }
+  &::after {
+    @extend ::before;
+    width: 360px;
+    height: 2px;
+    top: calc(50vh + 20px);
+    left: calc(50vw - 450px);
+    background-color: rgb(222, 222, 222);
+  }
+}
+
+.myname {
+  height: calc(100vh - 90px);
+  line-height: calc(100vh - 90px);
+  position: relative;
+  font: {
+    size: 1.5rem;
+    weight: normal;
+  }
+  @include bp2 {
+    font-size: 1.25rem;
+  }
+  /*右下の縦線*/
+  &::before {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 35vh;
+    top: calc(50vh + 20px);
+    left: 70vw;
+    background-color: rgb(100, 100, 100);
+    z-index: -1;
+  }
+} 
+
+/*------------------------------------
+  プロフィール 
+--------------------------------------*/
+.profile-item {
+  position: relative;
+  height: 380px;
+  margin-bottom: 20px;
+  @include bp2 {
+    flex-direction: column;
+    align-items: center;
+  }
+  .detail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 400px;
+    padding: 0px 15px 100px 45px;
+    background-color: rgb(255, 255, 255);
+    @include bp1 {
+      padding: 0 15px;
+    }
+    dt {
+      font-weight: 500;
+    }
+    dd {
+      margin: 5px 0 20px 15px; 
+      @include bp2 {
+        font-size: 0.825rem;
+      }
+    }
+  }
+  img {
+    position: absolute;
+    width: 130px;
+    height: 320px;
+    object-fit: cover;
+    z-index: -1;
+    @include bp2 {
+      width: 90%;
+      height: 120px;
+      left: 0;
+      z-index: 0;
+    }
+    &:nth-of-type(1) {
+      bottom: 20px;
+      right: 0;
+      margin: 0 auto;
+    }
+    &:nth-of-type(2) {
+      bottom: 60px;
+      right: 280px;
+      @include bp2 {
+        display: none;
+      }
+    }
+  }
+}
+
+/*------------------------------------
+  制作物 
+--------------------------------------*/
+#work {
+  position: relative;
+  overflow: hidden;
+  /*背景の灰色／縮小したときに崩れないように横幅広め（overflow: hiddenで隠す）*/
+  &::before {
+    content: "";
+    position: absolute;
+    width: 140%;
+    height: 60%;
+    top: 20%;
+    left: -20%;
+    transform: rotate(5deg);
+    background-color: rgb(240, 240, 240);
+  }
+  .work-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 60px;
+    @include bp1 {
+      flex-direction: column;
+      margin-bottom: 30px;
+    }
+  } 
+  .sample {
+    width: 40%;
+    padding-left: 45px;
+    @include bp1 {
+      padding-left: 0;
+      margin-bottom: 40px;
+      max-width: 500px;
+      width: 100%;
+    }
+    a {
+      display: block;
+      outline: 1px solid rgb(110, 181, 183);
+      &:hover {
+        outline: 3px solid rgb(110, 181, 183);
+        opacity: 0.7;
+      }
+    }
+    img {
+      object-fit: cover;
+    }
+    .pc-img {
+      @include bp1 {
+        display: none;
+      }
+    }
+    .tab-img {
+      display: none;
+      @include bp1 {
+        display: block;
+      }
+    }
+  }
+  .content {
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    @include bp1 {
+      width: 100%;
+    }
+    @include bp2 {
+      margin-left: 5%;
+      flex-direction: column;
+    }
+    dt {
+      width: 20%;
+      padding: 10px;
+      margin-bottom: 10px;
+      @include bp1 {
+        width: 25%;
+        margin-bottom: 0;
+      }
+      @include bp2 {
+        padding: 0;
+        border-bottom: 1px solid rgb(0, 0, 0);
+      }
+    }
+    dd { 
+      width: 65%;
+      padding: 10px;
+      margin-bottom: 10px;
+      @include bp1 {
+        width: 60%;
+        min-width: 330px;
+      }
+      @include bp2 {
+        padding-top: 5px;
+      }
+    }
+  }
+}
+
+/*リンクのボタン*/
+.button {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+  @include bp1 {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  a {
+    display: inline-block; 
+    margin: 0 40px;
+    width: 300px;
+    height: 70px;
+    border: 1px solid rgb(110, 181, 183);
+    line-height: 70px;
+    text-align: center;
+    position: relative;
+    transition: 0.8s;
+    @include bp1 {
+      margin: 20px;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: -15px;
+      width: 299px;
+      height: 69px;
+      background-color: rgba(199, 230, 231, 0.7);
+      transition: 0.6s;
+      z-index: -1;
+    } 
+    &:hover {
+      background-color: transparent;
+      color: rgb(255, 255, 255);
+      &::after {
+        top: 0;
+        left: 0;
+        background-color: rgb(110, 181, 183);
+      } 
+    }
+  }
+}  
+
+/*------------------------------------
+  スキル
+--------------------------------------*/
+.mini-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 40px 0 10px 0;
+}
+.skills {
+  margin: 60px 0;
+  ul {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    @include bp1 {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  li {
+    width: 50%;
+    padding: 0 15px;    
+    @include bp1 {
+      width: 100%;
+      margin-bottom: 60px;
+    }
+  }
+  img { 
+    width: 260px;
+    margin-bottom: -20px;  /*イラストと文字が離れすぎるため上に詰める*/
+    @include bp1 {
+      width: 200px;
+    }
+  }
+} 
+.language {
+  margin-top: 30px;
+  position: relative;
+  padding: 0 15px;
+  @include bp2 {
+    padding: 0;
+  }
+  img {
+    width: 190px;
+    @include bp1 {
+      width: 160px;
+    }
+  }
+  /*レタリングの下線*/
+  &::after {
+    content: "";
+    position: absolute;
+    left: 15px;
+    bottom: 20px;
+    width: 220px;
+    height: 1px;
+    background-color: #121212;
+    @include bp1 {
+      bottom: 15px;
+    }
+    @include bp2 {
+      left: 0;
+    }
+  }
+}
+
+/*文中のリンク*/
+.link-icon {
+  width: 35px;
+}
+
+/*------------------------------------
+  その他の制作物
+--------------------------------------*/
+#create {
+  position: relative;
+  overflow: hidden;
+  /*背景の灰色（#workと同様）*/
+  &::before {
+    content: "";
+    position: absolute;
+    width: 140%;
+    height: 60%;
+    top: 15%;
+    left: -20%;
+    transform: rotate(-5deg);
+    background-color: rgb(240, 240, 240);
+  }
+}
+.music{
+  display: flex;
+  justify-content: space-between;
+  @include bp1 {
+    flex-direction: column;
+    align-items: center;
+  }
+  li {
+    width: 50%;
+    padding: 0 20px;
+    margin-top: 60px;
+    &:nth-child(2){
+      margin-top: 200px;
+      @include bp1 {
+        margin-top: 60px;
+      }
+    }
+    @include bp1 {
+      max-width: 450px;
+      width: 80%;
+    }
+    @include bp2 {
+      width: 95%;
+    }
+  }
+}
+
+/*イラストのリンク*/
+.thumbnail {
+  a {
+    display: block;
+    &:hover {
+      outline: 3px solid rgb(110, 181, 183);
+      opacity: 0.7;
+    }
+  }
+}
+
+/*動画サイトリンク*/
+.upload {
+  display: flex;
+  justify-content: center;
+  a {
+    display: inline-block;
+    margin: 20px 30px 0 30px;
+    position: relative;
+    @include hov
+  }
+}
+
+
+/*------------------------------------
+  フッター
+--------------------------------------*/
+#footer {
+  text-align: center;
+  padding: 20px 15px;
+  font-size: 0.625rem;
+}
