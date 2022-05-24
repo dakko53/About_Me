@@ -94,6 +94,12 @@ body li {
   }
 }
 
+@media screen and (max-width: 860px) {
+  .title::before, .title::after, .title#intro::after {
+    height: 50px;
+  }
+}
+
 .title::after {
   left: 200px;
 }
@@ -131,6 +137,12 @@ body li {
 @media screen and (max-width: 860px) {
   .box {
     height: 60px;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .box {
+    height: 50px;
   }
 }
 

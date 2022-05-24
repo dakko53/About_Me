@@ -104,6 +104,9 @@ body {
     @include bp1 {
       height: 60px;
     }
+    @include bp1 {
+      height: 50px;
+    }
   }
   &::after {
     @extend ::before;
@@ -135,6 +138,9 @@ body {
   z-index: -2;
   @include bp1 {
     height: 60px;
+  }
+  @include bp1 {
+    height: 50px;
   }
 }
 
