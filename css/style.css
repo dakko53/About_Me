@@ -106,7 +106,13 @@ body li {
 
 @media screen and (max-width: 860px) {
   .section-title {
-    font-size: 2.75rem;
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .section-title {
+    font-size: 2rem;
   }
 }
 
